@@ -1,14 +1,20 @@
-from flask import Flask, request
-from flask_restful import Resource, Api
-
-app = Flask(__name__)
-app.config['JSON_AS_ASCII'] = False
-api = Api(app)
+from serverModule import app, db
+from serverModule.models import Url
+from serverModule.changeIndex import trans
+from flask import redirect
 
 
-@app.route('/get', methods=['GET'])
-def get():
-    return {"hello": "world!"}
+@app.route('/encode/<number>')
+def encode(number):
+    url = Url(origin_url=number)
+    db.session.add(url)
+    db.session.commit()
+    return f'{number}'
+
+
+@app.route('/redirection')
+def redirection():
+    return redirect("https://www.naver.com", code=302)
 
 
 if __name__ == "__main__":
