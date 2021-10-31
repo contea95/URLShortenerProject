@@ -1,6 +1,9 @@
+from re import T
 from flask import json, redirect, render_template, request, jsonify
 from serverModule import app, db
 from serverModule.model import Url
+from serverModule.changeIndex import trans, decode
+from serverModule.urlValidation import urlValidation
 import json
 
 
@@ -14,9 +17,9 @@ def index():
 @app.route('/<input_code>')
 def redirection(input_code):
     #   DB 내에 단축된 URL이 있으면 Redirect, 없으면 404 오류페이지
-    count = Url.query.filter_by(id=input_code).first()
+    count = Url.query.filter_by(id=decode(input_code)).first()
     if count is not None:
-        url = Url.query.filter_by(id=input_code).first()
+        url = Url.query.filter_by(id=decode(input_code)).first()
         # return f'{url.origin_url}'
         return redirect(str(url.origin_url), code=302)
     else:
@@ -32,8 +35,8 @@ def result():
         url = request.form['url']
         input_url = str(url)
         print(url)
-
-        if str(input_url).startswith('http://') == False and str(input_url).startswith('https://') == False:
+        # URL 유효성 판별
+        if urlValidation(str(input_url)) != True:
             return render_template('404.html'), 404
         else:
             count = Url.query.filter_by(origin_url=input_url).first()
@@ -44,12 +47,12 @@ def result():
                 db.session.commit()
                 url = Url.query.filter_by(origin_url=input_url).first()
                 print("new url Update!")
-                return render_template("result.html", url=url.id)
+                return render_template("result.html", url=trans(url.id))
             else:
                 # DB 내 단축 URL이 있을 경우
                 url = Url.query.filter_by(origin_url=input_url).first()
                 print("URL READ IN DB")
-                return render_template("result.html", url=url.id)
+                return render_template("result.html", url=trans(url.id))
 
 #   iOS용 접근 링크
 
@@ -61,8 +64,8 @@ def result_json():
         url = request.form['url']
         input_url = str(url)
         print(url)
-
-        if str(input_url).startswith('http://') == False and str(input_url).startswith('https://') == False:
+        # URL 유효성 판별
+        if urlValidation(str(input_url)) != True:
             return render_template('404.html'), 404
         else:
             count = Url.query.filter_by(origin_url=input_url).first()
@@ -73,12 +76,12 @@ def result_json():
                 db.session.commit()
                 id_num = Url.query.filter_by(origin_url=input_url).first()
                 print("new url Update!")
-                return jsonify({"url": str(id_num.id)})
+                return jsonify({"url": str(trans(id_num.id))})
             else:
                 # DB 내 단축 URL이 있을 경우
                 url = Url.query.filter_by(origin_url=input_url).first()
                 print("URL READ IN DB")
-                return jsonify({"url": str(url.id)})
+                return jsonify({"url": str(trans(url.id))})
 
 
 if __name__ == "__main__":
