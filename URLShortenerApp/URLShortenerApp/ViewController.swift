@@ -29,8 +29,8 @@ class ViewController: UIViewController {
         let paramData = param.data(using: .utf8)
         
         // URL 객체 정의
+        //let url = URL(string: "http://54.180.60.55:5000/result_json")
         let url = URL(string: "http://172.30.1.56:5000/result_json")
-        
         // request 객체 정의
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
