@@ -10,11 +10,20 @@ def hello():
 
 @app.route('/encode/<input_url>')
 def encode(input_url):
-    url = Url(origin_url=input_url)
-    db.session.add(url)
-    db.session.commit()
-    id_num = url.search_id_by_origin_url(origin_url=input_url)
-    return f'{id_num}'
+    count = Url.query.filter_by(origin_url=input_url).first()
+    if count is None:
+        # DB 내 단축 URL이 없을 경우
+        url = Url(origin_url=input_url)
+        db.session.add(url)
+        db.session.commit()
+        id_num = url.search_id_by_origin_url(origin_url=input_url)
+        print("new url Update!")
+        return f'{id_num.id}'
+    else:
+        # DB 내 단축 URL이 있을 경우
+        url = Url.query.filter_by(origin_url=input_url).first()
+        print("URL READ IN DB")
+        return f'{url.id}'
 
 
 @app.route('/redirection/<input_code>')
