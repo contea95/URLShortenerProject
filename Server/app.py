@@ -42,9 +42,9 @@ def result():
                 url = Url(origin_url=input_url)
                 db.session.add(url)
                 db.session.commit()
-                id_num = url.search_id_by_origin_url(origin_url=input_url)
+                url = Url.query.filter_by(origin_url=input_url).first()
                 print("new url Update!")
-                return render_template("result.html", url=id_num.id)
+                return render_template("result.html", url=url.id)
             else:
                 # DB 내 단축 URL이 있을 경우
                 url = Url.query.filter_by(origin_url=input_url).first()
@@ -71,9 +71,9 @@ def result_json():
                 url = Url(origin_url=input_url)
                 db.session.add(url)
                 db.session.commit()
-                id_num = url.search_id_by_origin_url(origin_url=input_url)
+                id_num = Url.query.filter_by(origin_url=input_url).first()
                 print("new url Update!")
-                return jsonify([id_num.id])
+                return jsonify({"url": str(id_num.id)})
             else:
                 # DB 내 단축 URL이 있을 경우
                 url = Url.query.filter_by(origin_url=input_url).first()
