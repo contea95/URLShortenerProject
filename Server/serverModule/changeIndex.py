@@ -27,7 +27,3 @@ def decode(index):
         result = result + (62 ** cnt) * words.index(i)
         cnt -= 1
     return result
-
-
-# print(trans(12233))
-print(decode("3BJ"))
