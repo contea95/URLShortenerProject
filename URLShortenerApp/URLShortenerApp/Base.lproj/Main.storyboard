@@ -17,18 +17,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="단축시킬 URL을 입력하세요 (https://...)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NA-7W-hWZ">
-                                <rect key="frame" x="16" y="144" width="358" height="34"/>
+                                <rect key="frame" x="16" y="135" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  🔖  URLShortener" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c84-aq-Kp5">
-                                <rect key="frame" x="16" y="85" width="211.66666666666666" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 🔖  URLShortener  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c84-aq-Kp5">
+                                <rect key="frame" x="25" y="76" width="217" height="29"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4D-fS-e1a">
-                                <rect key="frame" x="316" y="202" width="49" height="31"/>
+                                <rect key="frame" x="316" y="193" width="49" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="확인"/>
                                 <connections>
@@ -36,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7x-Ix-S7Y">
-                                <rect key="frame" x="16" y="241" width="358" height="31"/>
+                                <rect key="frame" x="16" y="232" width="358" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="단축된 링크가 여기에 표시됩니다"/>
                                 <connections>
@@ -44,13 +45,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위 버튼을 누르면 주소가 클립 보드에 저장됩니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09V-bb-GLq">
-                                <rect key="frame" x="16" y="276" width="358" height="19.333333333333314"/>
+                                <rect key="frame" x="16" y="267" width="358" height="19.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UGv-em-XKL">
-                                <rect key="frame" x="16" y="303" width="358" height="449.33333333333326"/>
+                                <rect key="frame" x="16" y="294" width="358" height="458.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="2KM-Ad-MCs" customClass="CustomCell" customModule="URLShortenerApp" customModuleProvider="target">
@@ -105,10 +106,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="09V-bb-GLq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8co-gN-HAU"/>
-                            <constraint firstItem="c84-aq-Kp5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="41" id="8vo-cY-CDo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i7x-Ix-S7Y" secondAttribute="trailing" constant="16" id="AR5-Sl-DYz"/>
                             <constraint firstItem="UGv-em-XKL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Aeu-us-hED"/>
                             <constraint firstItem="1NA-7W-hWZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Azo-kQ-EHY"/>
+                            <constraint firstItem="c84-aq-Kp5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="DI9-62-piT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="loF-zt-pce" secondAttribute="trailing" constant="16" id="EuK-sn-d9W"/>
                             <constraint firstItem="1NA-7W-hWZ" firstAttribute="top" secondItem="c84-aq-Kp5" secondAttribute="bottom" constant="30" id="FNI-ev-z3x"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1NA-7W-hWZ" secondAttribute="trailing" constant="16" id="MfA-rq-Ggj"/>
@@ -123,7 +124,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="loF-zt-pce" secondAttribute="bottom" constant="21.666666666666742" id="lMv-gb-uqg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="09V-bb-GLq" secondAttribute="trailing" constant="16" id="obC-2w-2XJ"/>
                             <constraint firstItem="loF-zt-pce" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pnc-UO-ogS"/>
-                            <constraint firstItem="c84-aq-Kp5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vx5-1L-PaN"/>
+                            <constraint firstItem="c84-aq-Kp5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="vx5-1L-PaN"/>
                         </constraints>
                     </view>
                     <connections>
@@ -141,6 +142,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
